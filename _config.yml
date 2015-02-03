@@ -1,0 +1,11 @@
+# Site settings
+title: The Guitar Pit
+description: > # this means to ignore newlines until "baseurl:"
+  Entrepreneur, Programmer, Yogi and Music lover.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://adanselm.github.io" # the base hostname & protocol for your site
+twitter_username: adanselm
+github_username:  adanselm
+
+# Build settings
+markdown: redcarpet
