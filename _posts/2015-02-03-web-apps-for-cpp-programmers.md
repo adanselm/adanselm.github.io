@@ -332,6 +332,8 @@ and how I organized the application overall, will come in due time.
 
 For now, back to C++!
 
+([See the next article in this serie here!]({% post_url 2015-02-24-web-app-frontend %}))
+
 ---
 
 [Apple MVC]: https://developer.apple.com/library/mac/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html
