@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "From Modern C++ to Modern Web Applications"
-date:   2015-01-31 19:35:53
+date:   2015-02-03 19:35:53
 categories: c++ programming
 comments: true
 ---
