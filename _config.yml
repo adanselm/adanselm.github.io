@@ -6,6 +6,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://adanselm.github.io" # the base hostname & protocol for your site
 twitter_username: adanselm
 github_username:  adanselm
+hopwork_id: 53bc1cb8e4b0a398b3451f14
 google_analytics_id: UA-59323394-1
 
 # Build settings
