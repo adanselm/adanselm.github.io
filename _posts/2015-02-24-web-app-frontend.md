@@ -313,7 +313,8 @@ Also, this will allow us to:
 But this article is long enough as it is, so I'm afraid you'll have to wait for
 the next one. Tons of fun ahead!
 
-----
+---
+
 [isojsairbnb]: http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/
 [airbnb-example]: https://github.com/spikebrehm/isomorphic-tutorial
 [airbnb-coffee]: https://github.com/couchand/isomorphic-react-example
