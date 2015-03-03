@@ -10,4 +10,13 @@ hopwork_id: 53bc1cb8e4b0a398b3451f14
 google_analytics_id: UA-59323394-1
 
 # Build settings
-markdown: redcarpet
+safe: true
+markdown: kramdown
+highlighter: pygments
+
+# enable Github Flavored Markdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  enable_coderay: false
+

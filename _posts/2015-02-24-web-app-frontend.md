@@ -54,7 +54,7 @@ In fact it is so easy to read, that you don't even have to use the [JSX format][
 to write your React components. This component renders two sub-components
 (ScheduleTable and SlotCreator) in just a few lines:
 
-```coffee
+{% highlight coffeescript linenos %}
 React = require 'react'
 ScheduleTable = require './ScheduleTable'
 SlotCreator = require './SlotCreator'
@@ -69,7 +69,7 @@ module.exports = React.createClass
       React.createElement ScheduleTable
       h2 null, "Add Slot:"
       React.createElement SlotCreator
-```
+{% endhighlight %}
 
 Here is a quick survival guide to read coffeescript:
 
@@ -229,7 +229,7 @@ dispatch a given action in case of success, and a different one in case of
 failure. But since we can't dispatch actions from within a store, such tasks have to
 be done from inside the action itself, like this:
 
-```coffee
+{% highlight coffeescript linenos %}
 module.exports = (context, payload, done) ->
 
   message =
@@ -250,7 +250,7 @@ module.exports = (context, payload, done) ->
       ## Confirmed => Mark the message as successfully sent
       context.dispatch 'RECEIVE_MESSAGES_SUCCESS', [message]
     done()
-```
+{% endhighlight %}
 
 In practice, Actions are slightly more complex and error prone than a dumb
 "function call" as described in the original Flux docs...
@@ -261,7 +261,7 @@ from within the same action when one would suffice.
 
 For example, take the following Fluxible action:
 
-```coffee
+{% highlight coffeescript linenos %}
 module.exports = (context, payload, done) ->
 
   message =
@@ -271,7 +271,7 @@ module.exports = (context, payload, done) ->
 
   context.dispatch 'RECEIVE_MESSAGES', [message]
   context.dispatch 'INCREMENT_AUTHOR_MSG_COUNT', payload.authorName
-```
+{% endhighlight %}
 
 Instead, you should have the MessageStore handle this incrementation, since it
 is not really a functional Action, rather a book-keeping task that comes with
@@ -312,6 +312,8 @@ Also, this will allow us to:
 
 But this article is long enough as it is, so I'm afraid you'll have to wait for
 the next one. Tons of fun ahead!
+
+[Next article here.]({% post_url 2015-03-03-obese-bird-ui %})
 
 ---
 

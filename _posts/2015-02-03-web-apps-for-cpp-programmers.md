@@ -208,7 +208,7 @@ AJAX, and the most popular library used to make it happen is jQuery.
 
 The beginning of [this article][FEforRails] shows a typical AJAX call, dirty but functional:
 
-```javascript
+{% highlight javascript linenos %}
 $(document).ready ->
   photoHTML = (photo) =>
     "<li>
@@ -234,7 +234,7 @@ $(document).ready ->
       $("#photo-list").append("<li>
                                  Failed to fetch photos.
                                </li>")
-```
+{% endhighlight %}
 
 It is still a type of communication that requires a request from the browser,
 and a response from the server though. If you need a persistent connection
