@@ -556,7 +556,7 @@ to this. Coffeescript is not that big a deal, but the metaprogramming abilities
 of Elixir would allow us to drastically reduce the total number of LOCs in our
 subsequent project.
 
-
+([See the next article in this serie here!]({% post_url 2015-04-07-intro-to-elixir %}))
 
 [coffeescript]: http://coffeescript.org/
 [flux]: http://facebook.github.io/flux/docs/overview.html
