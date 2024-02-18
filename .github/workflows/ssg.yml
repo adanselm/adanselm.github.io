@@ -61,7 +61,7 @@ jobs:
 
       - name: Install node Dependencies
         working-directory: assets/
-        run: yarn
+        run: yarn --no-lockfile
 
       - name: "Build Tableau"
         env:
