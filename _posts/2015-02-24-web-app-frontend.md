@@ -1,14 +1,14 @@
 ---
-layout: post
 title:  "From Modern C++ to Modern Web Applications 2: Hands On Front-End"
-date:   2015-02-24 11:33:00
+date:   "2015-02-24 11:33:00"
 categories: programming coffeescript isomorphic react flux javascript
-comments: true
+permalink: "/blog/:year-:month-:day-from-modern-cpp-to-modern-web-app-2"
+thumbnail: "/images/rubbergloveshouse.jpg"
 ---
 
 ![Funny picture of Dr.House with rubber gloves](/images/rubbergloveshouse.jpg)
 
-In the [previous article]({% post_url 2015-02-03-web-apps-for-cpp-programmers %}),
+In the [previous article](/blog/2015-02-03-from-modern-cpp-to-modern-web-app-1),
 I retraced the history of web applications architecture,
 in comparison with our beloved (and a bit more mature) C++ desktop/mobile applications.
 
@@ -20,7 +20,7 @@ and see how it is organized, while still keeping our C++ background in the back 
 The first thing I did was to look at the examples stemming from the
 [AirBnb article][isojsairbnb] I mentioned last time. Their aim is to demonstrate
 what isomorphic apps are, and how React (facebook's UI components) works.
-I spent some time fiddling with the [coffee-script version][airbnb-coffee] 
+I spent some time fiddling with the [coffee-script version][airbnb-coffee]
 of the [original AirBnb example][airbnb-example].
 
 It's a good starting point to get more familiar with coffee-script, and understand

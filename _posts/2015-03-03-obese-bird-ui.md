@@ -1,14 +1,14 @@
 ---
-layout: post
 title:  "From Modern C++ to Modern Web Applications 3: ObeseBird UI"
-date:   2015-03-03 11:23:00
+date:   "2015-03-03 11:23:00"
 categories: programming coffeescript isomorphic react flux javascript
-comments: true
+permalink: "/blog/:year-:month-:day-from-modern-cpp-to-modern-web-app-3"
+thumbnail: "/images/ghost-in-the-shell-keyboard.gif"
 ---
 
 Read the previous articles in the serie here:
-[Part 1]({% post_url 2015-02-03-web-apps-for-cpp-programmers %}),
-[Part 2]({% post_url 2015-02-24-web-app-frontend %})
+[Part 1](/blog/2015-02-03-from-modern-cpp-to-modern-web-app-1),
+[Part 2](/blog/2015-02-24-from-modern-cpp-to-modern-web-app-2)
 
 Here comes the fun part where we actually do code something!
 

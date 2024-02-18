@@ -1,16 +1,125 @@
 ---
-layout: post
 title: 'Idea: Markdown extension for UML sequence diagrams'
-date: '2012-12-21T03:22:00.003+01:00'
+date: "2012-12-21T03:22:00.003+01:00"
 author: Adrien Anselme
 tags:
 - UML
 - Ruby
 - Github
 - Markdown
-modified_time: '2012-12-21T03:24:12.062+01:00'
-blogger_id: tag:blogger.com,1999:blog-5707482977882730214.post-6251493674363697880
-blogger_orig_url: http://adanselm.blogspot.com/2012/12/idea-markdown-extension-for-uml.html
+updated: "2012-12-21T03:24:12.062+01:00"
+permalink: "/blog/:year-:month-:day-idea-markdown-extension-for-uml"
 ---
 
-As a developer, once the project you work on reaches a certain size, you inevitably find yourself facing the loch ness monster of all big code bases, the creature that has been giving headaches to all software project leaders for the past 40 years (and probably even more for non-software related projects) : <b>documentation</b>!<br /><br />Of course, things have improved since those days where people were employed full time just to gather documentation from all teams and centralize it in big binders:<br /><br /><ul><li>Descriptions now tend to reside as close to the code as possible, either directly taken into account by the language syntax specifications such as in Python Docstrings, or in a good ol' Doxygen comment block in C++.</li><li>The Open Source movement has emphasized the importance of code readability, since its purpose is to make it available to thousands of developers. Most of the time, if you have a good naming convention and a clear style, you don't need to provide additional doxygen comments to say <i>"this parameter is an input string representing a website address"</i>, but you should obviously mention it if you expect your input parameter to be lower than 1.0 (although this should also appear as an assertion at the beginning of your function).</li><li>Wikis are now part of the everyday life. Everybody knows wikipedia. Most people also know it is super easy to modify. So all developers have integrated the concept as well, thus reducing the inevitable deprecation of documentation over code.</li></ul><h3>Of course, there is a "But..."</h3><div>But there is a thing that I like to do, that I haven't been able to do properly yet: <b>Diagrams</b>.</div><div><br /></div><div>I'm not talking about a big diagram of your 500 classes data model. That would be impossible to maintain, and doxygen or similar tools are able to produce it anyway.</div><div>I'm talking about simple, concise, easy to maintain diagrams allowing anyone reading your code for the first time to cease the gist of this particularly complex protocol, this thread-spawning class or this "chain of responsibility" pattern implementation you're so proud of.</div><div><br /></div><div>Think about the poor guy who will have to patch your code in production because there is a threat of code injection in your input parsing routine. You designed an hyper-modular visitor pattern which spreads the parsing into small dedicated classes, all the guy has to do is to fix a function in one of these small classes, he should be able to discover that in a glimpse, when looking at your wiki page at 4am with an angry client over the phone...</div><div><br /></div><div>Maybe that's just me. I like visualize things to understand them. But I'm pretty sure that if I do need this kind of stuff, others will.</div><h3>Traditional approaches</h3><div>Up to now, I was making these diagrams using tools like Dia or google drawing, or microsoft visio, or basically any other tool I had the ability to use.</div><div><ul><li>Desktop solutions have the obvious problem that every collaborator need a copy of the software to enrich/fix/improve it. Even with free software solutions such as Dia, it is still a huge barrier to overcome, especially when you're not particularly motivated to document in the first place.</li><li>Desktop solution and most online ones force you to export the work in a png/svg, thus making it difficult to iterate when improvements need to be done: "Bob! Where can I find the goddamn source for that png in the wiki? It's a google drawing? Did you share it with me?". And I'm not even mentioning what would happen if Bob was on vacation...</li><li>Other online tools are made by companies that try to make money (I'm not blaming them!), thus getting in the way of a necessary data universality that is required in open source projects for instance. And even for closed source projects, you don't really own your drawings if all you have is a permalink to a cloud based application, do you?</li></ul></div><h3>The requirements</h3><div>Needless to say, I searched the web for a ready-made solution to my problem, that is:</div><div><ul><li>A simple model-driven way of describing a diagram</li><li>That could be embedded into a wiki, to be easily modifiable</li><li>And would translate into a beautiful drawing</li><li>Without requiring any external application to modify it,</li><li>But could optionally be generated by a more user-friendly wysiwyg application</li></ul><div>What I found was not very conclusive. It consisted mostly of javascript toolkits to help drawing on html/css or svg canvas, such as the pretty good looking <a href="http://raphaeljs.com/">Raphaeljs</a>. This is obviously too generic and doesn't really separate the data from its rendered view.</div></div><div><br /></div><div>Then I found the much more compliant <a href="http://kangamodeling.codeplex.com/">KangaModeling</a>, which, despite its "underwear modeling agency"-sounding&nbsp;appellation, proposes to transform a sort of markup language into an UML sequence diagram, such as the one below, using their downloadable or on-demand parsing web service (written in .NET, MIT licensed).</div><div><br /></div><table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;"><tbody><tr><td style="text-align: center;"><a href="http://i3.codeplex.com/Download?ProjectName=KangaModeling&amp;DownloadId=372979" imageanchor="1" style="margin-left: auto; margin-right: auto;"><img border="0" src="http://i3.codeplex.com/Download?ProjectName=KangaModeling&amp;DownloadId=372979" /></a></td></tr><tr><td class="tr-caption" style="text-align: center;">The kind of diagrams produced by KangaModeling</td></tr></tbody></table><h3>One step further</h3><div>Now I still see several problems there:</div><div><ul><li>It is written in .NET, and I don't like that, because like any C++ developer, I'm jealous of their standard library. And also, this would make it difficult to include it in the existing wiki syntax engines I can think of.</li><li>It generates a PNG and I would like something more fancy. Like SVG.</li><li>It only does sequence diagrams yet (but this is apparently on their todo list)</li></ul><div>What I think would be a cool follow up to this investigation would be to try to <u>make a Markdown extension to take this suggested syntax and render an SVG</u>.</div></div><div class="separator" style="clear: both; text-align: center;"></div><div>Why Markdown? Because with the success of Github, it has become one of the most popular wiki markup syntaxes, and we want every developer to use our solution, remember? So why not improve the tools Github already use and propose them a draft they could include on the website?</div><div><br /></div><div>A little googling shows that they wrapped an existing markdown engine written in C (Sundown) into a ruby gem called <a href="https://github.com/vmg/redcarpet">Redcarpet</a>. The funny thing is that I've never done any Ruby (since I'm too busy coding <a href="http://springbeats.com/">multi-threaded C++ applications for real men with balls</a>. Or moustaches. Or both).</div><div><br /></div><div>So that will be my exercise for when I need a break in the coming days. But if anyone feels like stealing the idea, please do ;)</div><div><br /></div>
+As a developer, once the project you work on reaches a certain size, you inevitably find yourself facing the loch ness
+monster of all big code bases, the creature that has been giving headaches to all software project leaders for the past
+40 years (and probably even more for non-software related projects) : <b>documentation</b>!<br /><br />Of course, things
+have improved since those days where people were employed full time just to gather documentation from all teams and
+centralize it in big binders:<br /><br />
+<ul>
+    <li>Descriptions now tend to reside as close to the code as possible, either directly taken into account by the
+        language syntax specifications such as in Python Docstrings, or in a good ol' Doxygen comment block in C++.</li>
+    <li>The Open Source movement has emphasized the importance of code readability, since its purpose is to make it
+        available to thousands of developers. Most of the time, if you have a good naming convention and a clear style,
+        you don't need to provide additional doxygen comments to say <i>"this parameter is an input string representing
+            a website address"</i>, but you should obviously mention it if you expect your input parameter to be lower
+        than 1.0 (although this should also appear as an assertion at the beginning of your function).</li>
+    <li>Wikis are now part of the everyday life. Everybody knows wikipedia. Most people also know it is super easy to
+        modify. So all developers have integrated the concept as well, thus reducing the inevitable deprecation of
+        documentation over code.</li>
+</ul>
+<h3>Of course, there is a "But..."</h3>
+<div>But there is a thing that I like to do, that I haven't been able to do properly yet: <b>Diagrams</b>.</div>
+<div><br /></div>
+<div>I'm not talking about a big diagram of your 500 classes data model. That would be impossible to maintain, and
+    doxygen or similar tools are able to produce it anyway.</div>
+<div>I'm talking about simple, concise, easy to maintain diagrams allowing anyone reading your code for the first time
+    to cease the gist of this particularly complex protocol, this thread-spawning class or this "chain of
+    responsibility" pattern implementation you're so proud of.</div>
+<div><br /></div>
+<div>Think about the poor guy who will have to patch your code in production because there is a threat of code injection
+    in your input parsing routine. You designed an hyper-modular visitor pattern which spreads the parsing into small
+    dedicated classes, all the guy has to do is to fix a function in one of these small classes, he should be able to
+    discover that in a glimpse, when looking at your wiki page at 4am with an angry client over the phone...</div>
+<div><br /></div>
+<div>Maybe that's just me. I like visualize things to understand them. But I'm pretty sure that if I do need this kind
+    of stuff, others will.</div>
+<h3>Traditional approaches</h3>
+<div>Up to now, I was making these diagrams using tools like Dia or google drawing, or microsoft visio, or basically any
+    other tool I had the ability to use.</div>
+<div>
+    <ul>
+        <li>Desktop solutions have the obvious problem that every collaborator need a copy of the software to
+            enrich/fix/improve it. Even with free software solutions such as Dia, it is still a huge barrier to
+            overcome, especially when you're not particularly motivated to document in the first place.</li>
+        <li>Desktop solution and most online ones force you to export the work in a png/svg, thus making it difficult to
+            iterate when improvements need to be done: "Bob! Where can I find the goddamn source for that png in the
+            wiki? It's a google drawing? Did you share it with me?". And I'm not even mentioning what would happen if
+            Bob was on vacation...</li>
+        <li>Other online tools are made by companies that try to make money (I'm not blaming them!), thus getting in the
+            way of a necessary data universality that is required in open source projects for instance. And even for
+            closed source projects, you don't really own your drawings if all you have is a permalink to a cloud based
+            application, do you?</li>
+    </ul>
+</div>
+<h3>The requirements</h3>
+<div>Needless to say, I searched the web for a ready-made solution to my problem, that is:</div>
+<div>
+    <ul>
+        <li>A simple model-driven way of describing a diagram</li>
+        <li>That could be embedded into a wiki, to be easily modifiable</li>
+        <li>And would translate into a beautiful drawing</li>
+        <li>Without requiring any external application to modify it,</li>
+        <li>But could optionally be generated by a more user-friendly wysiwyg application</li>
+    </ul>
+    <div>What I found was not very conclusive. It consisted mostly of javascript toolkits to help drawing on html/css or
+        svg canvas, such as the pretty good looking <a href="http://raphaeljs.com/">Raphaeljs</a>. This is obviously too
+        generic and doesn't really separate the data from its rendered view.</div>
+</div>
+<div><br /></div>
+<div>Then I found the much more compliant <a href="http://kangamodeling.codeplex.com/">KangaModeling</a>, which, despite
+    its "underwear modeling agency"-sounding&nbsp;appellation, proposes to transform a sort of markup language into an
+    UML sequence diagram, such as the one below, using their downloadable or on-demand parsing web service (written in
+    .NET, MIT licensed).</div>
+<div><br /></div>
+<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container"
+    style="margin-left: auto; margin-right: auto; text-align: center;">
+    <tbody>
+        <tr>
+            <td style="text-align: center;"><a
+                    href="http://i3.codeplex.com/Download?ProjectName=KangaModeling&amp;DownloadId=372979"
+                    imageanchor="1" style="margin-left: auto; margin-right: auto;"><img border="0"
+                        src="http://i3.codeplex.com/Download?ProjectName=KangaModeling&amp;DownloadId=372979" /></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="tr-caption" style="text-align: center;">The kind of diagrams produced by KangaModeling</td>
+        </tr>
+    </tbody>
+</table>
+<h3>One step further</h3>
+<div>Now I still see several problems there:</div>
+<div>
+    <ul>
+        <li>It is written in .NET, and I don't like that, because like any C++ developer, I'm jealous of their standard
+            library. And also, this would make it difficult to include it in the existing wiki syntax engines I can
+            think of.</li>
+        <li>It generates a PNG and I would like something more fancy. Like SVG.</li>
+        <li>It only does sequence diagrams yet (but this is apparently on their todo list)</li>
+    </ul>
+    <div>What I think would be a cool follow up to this investigation would be to try to <u>make a Markdown extension to
+            take this suggested syntax and render an SVG</u>.</div>
+</div>
+<div class="separator" style="clear: both; text-align: center;"></div>
+<div>Why Markdown? Because with the success of Github, it has become one of the most popular wiki markup syntaxes, and
+    we want every developer to use our solution, remember? So why not improve the tools Github already use and propose
+    them a draft they could include on the website?</div>
+<div><br /></div>
+<div>A little googling shows that they wrapped an existing markdown engine written in C (Sundown) into a ruby gem called
+    <a href="https://github.com/vmg/redcarpet">Redcarpet</a>. The funny thing is that I've never done any Ruby (since
+    I'm too busy coding <a href="http://springbeats.com/">multi-threaded C++ applications for real men with balls</a>.
+    Or moustaches. Or both).</div>
+<div><br /></div>
+<div>So that will be my exercise for when I need a break in the coming days. But if anyone feels like stealing the idea,
+    please do ;)</div>
+<div><br /></div>

@@ -1,0 +1,112 @@
+name: Deploy site to GH pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          version-file: ".tool-versions"
+          version-type: strict
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".tool-versions"
+      - name: Elixir Deps Cache
+        id: elixir-deps-cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            deps
+            _build
+            .mix/archives/
+          key: elixir-build-${{hashFiles('.tool-versions')}}-${{hashFiles('mix.lock')}}
+          restore-keys: elixir-build-${{hashFiles('.tool-versions')}}-
+
+      - name: Install Elixir Dependencies
+        run: |
+          mix local.hex --force --if-missing
+          mix deps.get
+
+      # Setup-node doesn't play nice with yarn > 2 Because of corepack issues
+      # You can probably remove this manual cache later
+      - name: Enable corepack for new yarn
+        run: corepack enable
+      - name: "Get yarn cache dir"
+        id: yarn-cache-dir-path
+        working-directory: assets/
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+
+      - name: Yarn Deps Cache
+        id: yarn-deps-cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: yarn-cache-${{hashFiles('.tool-versions')}}-${{hashFiles('assets/yarn.lock')}}
+          restore-keys: yarn-cache-${{hashFiles('.tool-versions')}}-
+
+      - name: Install node Dependencies
+        working-directory: assets/
+        run: yarn
+
+      - name: "Build Tableau"
+        env:
+          MIX_ENV: prod
+        run: |
+          mix tableau.build
+
+      - name: "Build static assets"
+        working-directory: assets/
+        env:
+          NODE_ENV: "production"
+        run: |
+          yarn build
+
+      - name: Minify cache
+        id: minify-cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./minify
+          key: minify-0.11.1
+
+      - name: Download minify script
+        if: steps.minify-cache.outputs.cache-hit != 'true'
+        run: |
+          curl https://wilsonl.in/minify-html/bin/0.11.1-linux-x86_64 > minify
+          chmod +x minify
+
+      - name: Shrink HTML
+        run: |
+          shopt -s globstar
+          ./minify --minify-css --minify-js _site/**/*.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./_site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

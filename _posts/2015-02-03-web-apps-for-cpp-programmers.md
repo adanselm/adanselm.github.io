@@ -1,9 +1,9 @@
 ---
-layout: post
 title:  "From Modern C++ to Modern Web Applications"
-date:   2015-02-03 19:35:53
+date:   "2015-02-03 19:35:53"
 categories: c++ programming
-comments: true
+permalink: "/blog/:year-:month-:day-from-modern-cpp-to-modern-web-app"
+thumbnail: "/images/fb-minitel.jpg"
 ---
 
 ![Funny picture of facebook on the minitel](/images/fb-minitel.jpg)
@@ -39,7 +39,7 @@ But first, a quick reminder of how our desktop and mobile apps are structured.
 ## A typical MVC C++ application for the desktop or mobile
 
 It doesn't matter if you're making a game, a photo editor, or a porn stash
-application, when there's a GUI and an application state to be stored in 
+application, when there's a GUI and an application state to be stored in
 some way, you'll find that it's a good habit to divide your program in the
 Model-View-Controller organization. Or one of its derivatives : MVP, MVVM, IMMVP,...
 Okay, I just made that last one up, sorry.
@@ -146,7 +146,7 @@ So, this is the state of desktop (and mobile) applications as I know them :
   that really accelerate the development of a desktop application
   - Best practices and designs take some time to learn, but once you master them,
   you know they're not going to radically change
-  - The only system we have to fit into, for the people to use our application, 
+  - The only system we have to fit into, for the people to use our application,
   is the Operating System. Nothing forces you to use a particular protocol to
   communicate with your servers.
 
@@ -199,7 +199,7 @@ The communication is only one way: browser request -> server response. So in my
 beautiful porn-stash application, if I want more details about a starlet and
 follow the link on her name, here comes the full page reload!
 
-Luckily, browser already had support for a scripting language called 
+Luckily, browser already had support for a scripting language called
 JavaScript (later standardized as [ECMAScript](http://en.wikipedia.org/wiki/ECMAScript)),
 and developers realized they could leverage its functionalities to request
 data from the server in an asynchronous way, and modify the nodes constituting
@@ -227,7 +227,7 @@ $(document).ready ->
 
         node.on('click', (e) =>
           e.preventDefault()
-          node.find('img').prop('src', 
+          node.find('img').prop('src',
             photo.url + '.grayscaled.jpg')
         )
     onFailure: =>

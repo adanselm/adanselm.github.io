@@ -1,22 +1,17 @@
 ---
-layout: post
 title:  "From Modern C++ to Modern Web Applications 5: JSON API with Elixir and Phoenix"
-date:   2015-06-16 11:23:00
+date:   "2015-06-16 11:23:00"
 categories: programming distributed system elixir json phoenix api
-comments: true
+permalink: "/blog/:year-:month-:day-from-modern-cpp-to-modern-web-app-5"
+thumbnail: "/images/mcferrin.jpg"
 ---
 
 Read the previous articles in the serie here:
-[Part 1]({% post_url 2015-02-03-web-apps-for-cpp-programmers %}),
-[Part 2]({% post_url 2015-02-24-web-app-frontend %}),
-[Part 3]({% post_url 2015-03-03-obese-bird-ui %}),
-[Part 4]({% post_url 2015-04-07-intro-to-elixir %})
 
-God I miss Poland...
-
-![Girls wrestling in oil](/images/oil-wrestling.jpg)
-
-(Picture courtesy of http://partykrakow.co.uk/. I don't know these girls, sorry.)
+- [Part 1](/blog/2015-02-03-from-modern-cpp-to-modern-web-app-1),
+- [Part 2](/blog/2015-02-24-from-modern-cpp-to-modern-web-app-2),
+- [Part 3](/blog/2015-03-03-from-modern-cpp-to-modern-web-app-3),
+- [Part 4](/blog/2015-04-07-from-modern-cpp-to-modern-web-app-4)
 
 Finally, after visiting Poland and attending the [European Elixir Conference][elixir conf eu],
 and after working on the latest version of [AutoTheory][autotheory] (to be released soon), I can
@@ -107,7 +102,7 @@ $ rm web/controllers/page_controller.ex web/views/page_view.ex test/controllers/
 The `no-brunch` option tells phoenix not to bother creating an asset packaging
 task, which is useful when you have images, CSS, javascript, etc that you
 want to transform before putting them in your project. `Brunch` is the name of
-the tool used for this purpose. We don't need this here since we're only 
+the tool used for this purpose. We don't need this here since we're only
 doing a JSON api that will manipulate text data. And it will greatly simplify
 the testing and deployment process. Let's keep it simple at first. You're big
 enough to take it to the next level by yourself when you feel like it.
@@ -177,8 +172,8 @@ Adding the `V1` namespace to the module names and the helper functions:
 
 ```
 $ sed -i '' 's/defmodule ObesebirdApi/defmodule ObesebirdApi.V1/' web/controllers/v1/*.ex web/views/v1/*.ex test/controllers/v1/*.exs
-$ sed -i '' 's/post_path/v1_post_path/' test/controllers/v1/*.exs                                                                                                                                                               (master✱) 
-$ sed -i '' 's/category_path/v1_category_path/' test/controllers/v1/*.exs                                                                                                                                                       (master✱) 
+$ sed -i '' 's/post_path/v1_post_path/' test/controllers/v1/*.exs                                                                                                                                                               (master✱)
+$ sed -i '' 's/category_path/v1_category_path/' test/controllers/v1/*.exs                                                                                                                                                       (master✱)
 $ sed -i '' 's/slot_path/v1_slot_path/' test/controllers/v1/*.exs
 ```
 
@@ -236,7 +231,7 @@ Create an `elixir_buildpack.config` file containing:
 config_vars_to_export=(PORT DATABASE_URL SECRET_KEY_BASE)
 ```
 
-And add it to git. 
+And add it to git.
 I also commented the `manifest.json` setting in `config/prod.exs`.
 
 Running `git push heroku master` after committing should now load your api in production. Then

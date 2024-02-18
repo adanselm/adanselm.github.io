@@ -1,15 +1,15 @@
 ---
-layout: post
 title:  "From Modern C++ to Modern Web Applications 4: Introduction to Elixir"
-date:   2015-04-07 11:23:00
+date:   "2015-04-07 11:23:00"
 categories: programming distributed system elixir erlang
-comments: true
+permalink: "/blog/:year-:month-:day-from-modern-cpp-to-modern-web-app-4"
+thumbnail: "/images/knight-rider.gif"
 ---
 
 Read the previous articles in the serie here:
-[Part 1]({% post_url 2015-02-03-web-apps-for-cpp-programmers %}),
-[Part 2]({% post_url 2015-02-24-web-app-frontend %}),
-[Part 3]({% post_url 2015-03-03-obese-bird-ui %})
+[Part 1](/blog/2015-02-03-from-modern-cpp-to-modern-web-app-1),
+[Part 2](/blog/2015-02-24-from-modern-cpp-to-modern-web-app-2),
+[Part 3](/blog/2015-03-03-from-modern-cpp-to-modern-web-app-3)
 
 Behold the sexiest language I've seen in years!
 
@@ -165,7 +165,7 @@ the language itself. For several reasons:
 * Elixir macros made it possible to define a test case using the "test" keyword
 and a string. Macros are powerful, although as in any language, too much of them can
 be harmful.
-* The `|>` pipeline operator clarifies the chain of operations nicely. 
+* The `|>` pipeline operator clarifies the chain of operations nicely.
 
 Combined with the other Erlang features that I mentioned above, such as
 pattern matching, I personally find it very pleasant to write in Elixir.
@@ -213,4 +213,3 @@ at the end of the month.
 [how i start elixir]: http://howistart.org/posts/elixir/1
 [phoenix]: http://phoenixframework.org
 [elixir conf eu]: http://elixirconf.eu/
-
