@@ -1,0 +1,19 @@
+{
+  "name": "assets",
+  "packageManager": "yarn@4.0.2",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node watch.mjs"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "esbuild": "^0.19.7",
+    "esbuild-plugin-minify-html-literals": "^1.0.6",
+    "esbuild-sass-plugin": "^2.16.0",
+    "postcss": "^8.4.31",
+    "postcss-preset-env": "^9.3.0"
+  },
+  "dependencies": {
+    "lit": "^3.1.0"
+  }
+}
