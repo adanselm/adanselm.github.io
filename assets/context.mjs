@@ -1,24 +1,26 @@
 import * as esbuild from 'esbuild';
-import { sassPlugin } from 'esbuild-sass-plugin';
-import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
-import postcssPresetEnv from 'postcss-preset-env';
+import tailwindcss from 'tailwindcss';
+import postcss from 'esbuild-plugin-postcss2';
 import { minifyHTMLLiteralsPlugin } from 'esbuild-plugin-minify-html-literals';
 
 const dev = process.env.NODE_ENV !== "production";
 
 
 export default await esbuild.context({
-  // entryPoints: ["./css/style.scss", "./js/index.ts"],
+  entryPoints: ["./js/index.js"],
   bundle: true,
   minify: !dev,
   sourcemap: dev,
   legalComments: "linked",
   outdir: "../_site",
-  plugins: [minifyHTMLLiteralsPlugin(), sassPlugin({
-    async transform(source, resolveDir) {
-      const { css } = await postcss([autoprefixer, postcssPresetEnv({ stage: 0 })]).process(source);
-      return css
-    }
-  })]
+  plugins: [
+    minifyHTMLLiteralsPlugin(),
+    postcss.default({
+      plugins: [
+        tailwindcss,
+        autoprefixer,
+      ],
+    }),
+  ]
 });
