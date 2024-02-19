@@ -2,7 +2,8 @@ name: Deploy site to GH pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - master
   workflow_dispatch:
 
 permissions:
