@@ -9,6 +9,7 @@ defmodule Adanselm.RootLayout do
       <head>
         <title>Adrien Anselme -- Personal page</title>
         <link rel="stylesheet" type="text/css" href="/css/site.css" />
+        <link :if={assigns.page[:canonical]} rel="canonical" href={assigns.page[:canonical]} />
         <meta charset="utf-8" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
