@@ -19,6 +19,7 @@ defmodule Adanselm.RootLayout do
         <meta name="author" content="Adrien Anselme" />
         <meta property="og:locale" content="en_US" />
         <meta property="twitter:site" content="@adanselm" />
+        <script defer data-domain="adrienanselme.com" src="https://plausible.aidrien.com/js/script.js"></script>
       </head>
       <body>
         <%= render(@inner_content) %>
