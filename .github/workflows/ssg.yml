@@ -97,7 +97,7 @@ jobs:
           ./minify --minify-css --minify-js _site/**/*.html
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 
