@@ -41,3 +41,5 @@ Coolify allows you to define environment variables for your application. There i
 ![A screenshot of the domains setting in Coolify](/images/coolify-domains.jpg)
 
 Last little configuration detail: when you replace the default `domains` setting with your own domains, don't forget to use the `https` scheme. The nice part is that it's all you need to do to enable HTTPS for your application.
+
+__Note__: Since then I switched to a Dockerfile which is more flexible and really simple to do. [Check it out here.](/blog/2025-06-25-elixir-on-coolify-docker)
