@@ -45,7 +45,7 @@ defmodule Adanselm.IndexPage do
         </div>
         <ul role="list" class="mx-auto mt-12 mb-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <li>
-          <a href="https://www.ecohackers.co" class="flex flex-col gap-10 sm:flex-row">
+          <a href="https://ecohackers.substack.com" class="flex flex-col gap-10 sm:flex-row">
             <img class="aspect-[4/5] w-52 flex-none rounded-2xl object-cover" src="/images/20240216_ecohackers.png" alt="ecohackers illustration">
             <div class="max-w-xl flex-auto">
               <h3 class="text-lg font-semibold leading-8 tracking-tight text-gray-900">EcoHackers</h3>

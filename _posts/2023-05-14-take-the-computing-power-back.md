@@ -4,7 +4,7 @@ date:   "2023-05-14 11:23:00"
 categories: programming eco thoughts
 permalink: "/blog/:year-:month-:day-take-the-computing-power-back"
 thumbnail: "/images/lisp-machine.jpg"
-canonical: "https://www.ecohackers.co/p/take-the-computing-power-back?r=260wji&utm_campaign=post&utm_medium=web"
+canonical: "https://ecohackers.substack.com/p/take-the-computing-power-back?r=260wji&utm_campaign=post&utm_medium=web"
 ---
 
 During my years studying engineering at the university, I had an AI class with an old teacher who had the tendency to forget the main subject of the course and tell stories from the time he was working at various computer science labs in the US instead.

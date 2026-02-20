@@ -4,7 +4,7 @@ date:   "2023-04-21 11:23:00"
 categories: personal history thoughts
 permalink: "/blog/:year-:month-:day-guerrilla-driven-change"
 thumbnail: "/images/henri.jpg"
-canonical: "https://www.ecohackers.co/p/guerrilla-driven-change?r=260wji&utm_campaign=post&utm_medium=web"
+canonical: "https://ecohackers.substack.com/p/guerrilla-driven-change?r=260wji&utm_campaign=post&utm_medium=web"
 ---
 
 My great uncle Henri was only 21 when the Gestapo got him.
